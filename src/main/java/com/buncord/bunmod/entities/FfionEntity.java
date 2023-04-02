@@ -62,10 +62,6 @@ public class FfionEntity extends Rabbit {
     }
   }
 
-  boolean wantsMoreCrime() {
-    return this.moreCrimeTicks == 0;
-  }
-
   static class DoCrimeGoal extends MoveToBlockGoal {
     private final FfionEntity ffionEntity;
     private boolean wantsToCrime;
@@ -86,7 +82,6 @@ public class FfionEntity extends Rabbit {
         }
 
         this.canCrime = false;
-        this.wantsToCrime = this.ffionEntity.wantsMoreCrime();
         this.wantsToCrime = true;
       }
 

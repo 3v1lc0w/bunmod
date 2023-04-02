@@ -19,7 +19,7 @@ public class GerryRenderer extends MobRenderer<GerryEntity, GerryModel<GerryEnti
     super(context, new GerryModel<>(context.bakeLayer(GerryModel.LAYER_LOCATION)), 0.3F);
   }
 
-  public ResourceLocation getTextureLocation(@NotNull GerryEntity entity) {
+  public @NotNull ResourceLocation getTextureLocation(@NotNull GerryEntity entity) {
     return RABBIT_GERRY_LOCATION;
   }
 

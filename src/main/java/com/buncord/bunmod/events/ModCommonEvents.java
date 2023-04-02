@@ -2,6 +2,7 @@ package com.buncord.bunmod.events;
 
 import com.buncord.bunmod.BunMod;
 import com.buncord.bunmod.entities.FfionEntity;
+import com.buncord.bunmod.entities.GenevieveEntity;
 import com.buncord.bunmod.entities.GerryEntity;
 import com.buncord.bunmod.init.EntityInit;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -20,6 +21,7 @@ public class ModCommonEvents {
   public static void entityAttributes(EntityAttributeCreationEvent event) {
     event.put(EntityInit.GERRY.get(), GerryEntity.createAttributes().build());
     event.put(EntityInit.FFION.get(), FfionEntity.createAttributes().build());
+    event.put(EntityInit.GENEVIEVE.get(), GenevieveEntity.createAttributes().build());
   }
 
 }

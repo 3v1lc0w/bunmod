@@ -1,7 +1,7 @@
 package com.buncord.bunmod.client.models;
 
 import com.buncord.bunmod.BunMod;
-import com.buncord.bunmod.entities.FfionEntity;
+import com.buncord.bunmod.entities.GenevieveEntity;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -20,9 +20,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class FfionModel<T extends FfionEntity> extends EntityModel<T> {
+public class GenevieveModel<T extends GenevieveEntity> extends EntityModel<T> {
   public static final ModelLayerLocation LAYER_LOCATION =
-      new ModelLayerLocation(new ResourceLocation(BunMod.MODID, "ffion"), "main");
+      new ModelLayerLocation(new ResourceLocation(BunMod.MODID, "genevieve"), "main");
 
   private final ModelPart leftRearFoot;
   private final ModelPart rightRearFoot;
@@ -38,7 +38,7 @@ public class FfionModel<T extends FfionEntity> extends EntityModel<T> {
   private final ModelPart nose;
   private float jumpRotation;
 
-  public FfionModel(ModelPart modelPart) {
+  public GenevieveModel(ModelPart modelPart) {
     this.leftRearFoot = modelPart.getChild("left_hind_foot");
     this.rightRearFoot = modelPart.getChild("right_hind_foot");
     this.leftHaunch = modelPart.getChild("left_haunch");

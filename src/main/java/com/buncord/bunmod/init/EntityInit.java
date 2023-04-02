@@ -2,6 +2,7 @@ package com.buncord.bunmod.init;
 
 import com.buncord.bunmod.BunMod;
 import com.buncord.bunmod.entities.FfionEntity;
+import com.buncord.bunmod.entities.GenevieveEntity;
 import com.buncord.bunmod.entities.GerryEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -32,6 +33,14 @@ public class EntityInit {
                               .sized(0.4F, 0.5F)
                               .clientTrackingRange(8)
                               .build(BunMod.MODID + ":ffion")
+  );
+
+  public static final RegistryObject<EntityType<GenevieveEntity>> GENEVIEVE = ENTITIES.register(
+      "genevieve",
+      () -> EntityType.Builder.of(GenevieveEntity::new, MobCategory.CREATURE)
+                              .sized(0.4F, 0.5F)
+                              .clientTrackingRange(8)
+                              .build(BunMod.MODID + ":genevieve")
   );
 
 }

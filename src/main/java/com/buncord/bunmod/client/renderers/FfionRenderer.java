@@ -19,7 +19,7 @@ public class FfionRenderer extends MobRenderer<FfionEntity, FfionModel<FfionEnti
     super(context, new FfionModel<>(context.bakeLayer(FfionModel.LAYER_LOCATION)), 0.3F);
   }
 
-  public ResourceLocation getTextureLocation(@NotNull FfionEntity entity) {
+  public @NotNull ResourceLocation getTextureLocation(@NotNull FfionEntity entity) {
     return RABBIT_FFION_LOCATION;
   }
 

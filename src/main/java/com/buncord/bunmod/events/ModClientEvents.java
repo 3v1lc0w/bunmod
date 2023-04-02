@@ -2,8 +2,10 @@ package com.buncord.bunmod.events;
 
 import com.buncord.bunmod.BunMod;
 import com.buncord.bunmod.client.models.FfionModel;
+import com.buncord.bunmod.client.models.GenevieveModel;
 import com.buncord.bunmod.client.models.GerryModel;
 import com.buncord.bunmod.client.renderers.FfionRenderer;
+import com.buncord.bunmod.client.renderers.GenevieveRenderer;
 import com.buncord.bunmod.client.renderers.GerryRenderer;
 import com.buncord.bunmod.init.EntityInit;
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,12 +26,14 @@ public class ModClientEvents {
   public static void entityRenderers(RegisterRenderers event) {
     event.registerEntityRenderer(EntityInit.GERRY.get(), GerryRenderer::new);
     event.registerEntityRenderer(EntityInit.FFION.get(), FfionRenderer::new);
+    event.registerEntityRenderer(EntityInit.GENEVIEVE.get(), GenevieveRenderer::new);
   }
 
   @SubscribeEvent
   public static void registerLayerDefinitions(RegisterLayerDefinitions event) {
     event.registerLayerDefinition(GerryModel.LAYER_LOCATION, GerryModel::createBodyLayer);
     event.registerLayerDefinition(FfionModel.LAYER_LOCATION, FfionModel::createBodyLayer);
+    event.registerLayerDefinition(GenevieveModel.LAYER_LOCATION, GenevieveModel::createBodyLayer);
   }
 
 }
