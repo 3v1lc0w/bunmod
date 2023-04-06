@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarpetBlock;
+import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
@@ -51,6 +52,7 @@ public class GerryEntity extends Rabbit {
       super(entity, level);
     }
 
+    @Override
     protected @NotNull PathFinder createPathFinder(int maxVisitedNodes) {
       this.nodeEvaluator = new GerryEntity.GerryNodeEvaluator();
       return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
@@ -58,17 +60,29 @@ public class GerryEntity extends Rabbit {
   }
 
   static class GerryNodeEvaluator extends WalkNodeEvaluator {
-    private final BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
-    public @NotNull BlockPathTypes getBlockPathType(BlockGetter blockGetter, int x, int y, int z) {
-      this.pos.set(x, y , z);
+    @Override
+    public @NotNull BlockPathTypes getBlockPathType(
+        @NotNull BlockGetter blockGetter,
+        int x,
+        int y,
+        int z
+    ) {
+      BlockPathTypes originalBlockPathType = super.getBlockPathType(blockGetter, x, y, z);
 
-      BlockState blockstate = blockGetter.getBlockState(this.pos);
-      Block block = blockstate.getBlock();
+      if (originalBlockPathType == BlockPathTypes.WALKABLE) {
+        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
+        blockPos.set(x, y, z);
 
-      return !(block instanceof CarpetBlock)
-             ? BlockPathTypes.BLOCKED
-             : getBlockPathTypeStatic(blockGetter, this.pos);
+        BlockState blockState = blockGetter.getBlockState(blockPos);
+        Block block = blockState.getBlock();
+
+        if (!(block instanceof CarpetBlock || block instanceof GrassBlock)) {
+          return BlockPathTypes.BLOCKED;
+        }
+      }
+
+      return originalBlockPathType;
     }
   }
 
