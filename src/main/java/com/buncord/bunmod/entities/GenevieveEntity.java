@@ -22,6 +22,7 @@ public class GenevieveEntity extends Rabbit {
 
   public static final List<String> NICKNAMES = ImmutableList.of(
       "genevieve",
+      "genevive",
       "genebun",
       "brionybun",
       "bunlove",
